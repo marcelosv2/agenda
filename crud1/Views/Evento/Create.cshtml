@@ -1,0 +1,42 @@
+﻿@{
+
+}
+<div>
+    <h3>Adicionar Evento</h3>
+    <form action="/Evento/Save" method="POST">
+        <input type="hidden" value="" name="Id" />
+        <table>
+            <tr>
+                <td>Descricao</td>
+                <td colspan="3">
+                    <textarea required cols="50" rows="4" name="Descricao"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Data</td>
+                <td><input required type="date" name="Data" /></td>
+                <td>
+                    H:<input required type="number" min="0" max="23" name="Hora" />
+                    Min: 00<input name="zero" type="checkbox" value="00" />
+                    30<input name="trinta" type="checkbox" value="30" />
+                </td>
+            </tr>
+            <tr>
+                <td>Observações</td>
+                <td colspan="3"><textarea cols="50" rows="4" name="Observacao"></textarea></td>
+            </tr>
+            <tr>
+                <td>Categoria</td>
+                <td>
+                    <select required name="categoriaId">
+                        <option value="1">Pessoal</option>
+                        <option value="2">Trabalho</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><br /><input type="submit" name="Enviar" /></td>
+            </tr>
+        </table>
+    </form>
+</div>

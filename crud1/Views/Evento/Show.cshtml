@@ -1,0 +1,76 @@
+﻿@{
+    crud1.Models.Evento Evento = (crud1.Models.Evento)ViewBag.Evento;
+    List<crud1.Models.Usuario> userList = (List<crud1.Models.Usuario>)ViewBag.UserList;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <style>
+        tr:nth-child(odd) {
+            background: #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #eee;
+        }
+
+        table tr:hover td {
+            background-color: #fff;
+        }
+    </style>
+    <div>
+        <h3>Show Evento</h3>
+        <table>
+            <tr style="background-color:#6f7c86; height:40px;">
+                <td>Id</td>
+                <td>@Evento.Id</td>
+            </tr>
+            <tr>
+                <td>Descrição</td>
+                <td>@Evento.Descricao</td>
+            </tr>
+            <tr>
+                <td>Data</td>
+                <td>@Evento.Data</td>
+            </tr>
+            <tr>
+                <td>Observação</td>
+                <td>@Evento.Observacao</td>
+            </tr>
+            <tr>
+                <td>Categoria</td>
+                <td>@Evento.Categoria.Nome</td>
+            </tr>
+        </table>
+
+        <br/>
+        <h3>Usuários Convidados</h3>
+        <table>
+            <thead>
+                <tr style="background-color:#6f7c86; height:40px;">
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (crud1.Models.Usuario item in userList)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Nome</td>
+                        <td>@item.Email</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

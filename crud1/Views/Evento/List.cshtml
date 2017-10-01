@@ -1,0 +1,51 @@
+﻿@{
+    List<crud1.Models.Evento> eventoList = (List<crud1.Models.Evento>)ViewBag.EventoList;
+}
+<div>
+    <h3>Eventos</h3>
+    <br />
+    <a href="/Evento/Create"><img src="~/Content/img/add.png" height="20px"></a>
+    <style>
+        tr:nth-child(odd) {
+            background: #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #eee;
+        }
+
+        table tr:hover td {
+            background-color: #fff;
+        }
+    </style>
+    <table>
+        <thead>
+            <tr style="background-color:#6f7c86; height:40px;color:white">
+                <th style="width:30px">Id</th>
+                <th style="width:100px">Descricao</th>
+                <th style="width:100px">Data</th>
+                <th style="width:100px">Observação</th>
+                <th style="width:100px">Categoria</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (crud1.Models.Evento e in eventoList)
+            {
+                <tr>
+                    <td>@e.Id</td>
+                    <td>@e.Descricao</td>
+                    <td>@e.Data</td>
+                    <td>@e.Observacao</td>
+                    <td>@e.Categoria.Nome</td>
+                    <td>
+                        <a href="/Evento/Show?id=@e.Id"><img src="~/Content/img/show.png" height="20px"></a>
+                        <a href="/Evento/Update?id=@e.Id"><img src="~/Content/img/edit.png" height="20px"></a>
+                        <a href="/Evento/Delete?id=@e.Id"><img src="~/Content/img/delete.png" height="20px"></a>
+                    </td>
+                </tr>
+            }
+        <tbody>
+    </table>
+</div>

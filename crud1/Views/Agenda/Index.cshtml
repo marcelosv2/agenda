@@ -1,0 +1,62 @@
+﻿@{
+    List<crud1.Models.Evento> eventoList = (List<crud1.Models.Evento>) ViewBag.EventoList;
+    Dictionary<string, crud1.Models.Evento> hashEvento = (Dictionary<string, crud1.Models.Evento>)ViewBag.EventosHash;
+}
+    <div>
+        <h3>Agenda</h3>
+        <form action="/Agenda/Index" method="GET">
+        <div>
+            <input type="date" name="data" style="width:300px; height:25px" />
+            <input type="submit" value="Buscar" style="height:30px"/>
+        </div>
+        </form>
+        <br/>
+        <style>
+            tr:nth-child(odd) {
+                background: #ddd;
+            }
+            tr:nth-child(even) {
+                background: #eee;
+            }
+            table tr:hover td {
+                background-color: #fff;
+            }
+        </style>
+        <table>
+            <thead>
+                <tr style="background-color:#6f7c86; height:40px;">
+                    <th>Horario</th>
+                    <th style="width:30px">Id</th>
+                    <th style="width:100px">Descricao</th>
+                    <th style="width:100px">Data</th>
+                    <th style="width:100px">Observação</th>
+                    <th style="width:100px">Categoria</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (string key in hashEvento.Keys)
+                {
+                    <tr>
+                        <td><p>@key</p></td>
+                        <td>@if (hashEvento[key] != null) { <p>@hashEvento[key].Id</p> }</td>
+                        <td>@if (hashEvento[key] != null) { <p>@hashEvento[key].Descricao</p> }</td>
+                        <td>@if (hashEvento[key] != null) { <p>@hashEvento[key].Observacao</p> }</td>
+                        <td>@if (hashEvento[key] != null) { <p>@hashEvento[key].Data.ToShortDateString()</p> }</td>
+                        <td>@if (hashEvento[key] != null) { <p></p> }</td>
+                        <td>@if (hashEvento[key] != null)
+                            { 
+                                <a href="/Agenda/Show?id=@hashEvento[key].Id">Convide contatos</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            <tbody>
+        </table>
+        
+        
+
+        
+    </div>

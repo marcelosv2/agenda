@@ -1,0 +1,82 @@
+﻿@{
+    crud1.Models.Evento e = ViewBag.Evento;
+    //string data = String.Format("{yyyy-MM-dd}", e.Data);
+    string data = e.Data.ToString("yyyy-MM-dd");
+    string hora = e.Data.Hour.ToString();
+    string min = e.Data.Minute.ToString();
+}
+
+<script>
+    function check(valor) {
+        var ct = document.getElementById("ct");
+        var cz = document.getElementById("cz");
+        if (valor == '30') { ct.checked = true; cz.checked = false;}
+        if (valor == '0') { cz.checked = true; ct.checked = false;}
+    }
+
+    function checkTrinta() {
+        var ct = document.getElementById("ct");
+        var cz = document.getElementById("cz");
+        ct.checked = true;
+        cz.checked = false;
+    }
+
+    function checkZero() {
+        var ct = document.getElementById("ct");
+        var cz = document.getElementById("cz");
+        ct.checked = false;
+        cz.checked = true;
+    }
+</script>
+
+<div>
+    <h3>Editar Evento</h3>
+    <form action="/Evento/Save" method="POST">
+        <input type="hidden" value="@e.Id" name="Id" />
+        <table>
+            <tr>
+                <td>Descricao</td>
+                <td colspan="3">
+                    <textarea cols="50" rows="4" name="Descricao">@e.Descricao</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Data</td>
+                <td><input type="date" name="Data" value="@data"/></td>
+                <td>
+                    H:<input type="number" min="0" max="23" name="Hora" value="@hora" />
+                    Min: 00<input id="cz" onclick="checkZero();" name="zero" min="0" type="checkbox" value="00" />
+                    30<input id="ct" onclick="checkTrinta();" name="trinta" min="0" type="checkbox" value="30" />
+                </td>
+            </tr>
+            <tr>
+                <td>Observações</td>
+                <td colspan="3"><textarea cols="50" rows="4" name="Observacao">@e.Observacao</textarea></td>
+            </tr>
+            <tr>
+                <td>Categoria</td>
+                <td>
+                    <select name="categoriaId">
+                        <option value=""></option>
+                        @if (e.Categoria.Id == 1)
+                        {
+                        <option selected value="1">Pessoal</option>}
+                        else
+                        {
+                        <option value="1">Pessoal</option>}
+                        @if (e.Categoria.Id == 2)
+                        {
+                        <option selected value="2">Trabalho</option>}
+                        else
+                        {
+                        <option value="2">Trabalho</option>}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><br /><input type="submit" name="Enviar" /></td>
+            </tr>
+        </table>
+    </form>
+    <script>check(@min);</script>
+</div>

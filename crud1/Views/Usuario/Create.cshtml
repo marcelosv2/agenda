@@ -1,0 +1,57 @@
+﻿@{
+    
+}
+
+    <div>
+        <h3>Adicionar Contato</h3>
+        <form action="/Usuario/Save" method="POST">
+            <input type="hidden" value="" name="Id" />
+            <table>
+                <tr>
+                    <td>Nome</td>
+                    <td><input type="text" name="Nome" placeholder="Digite o nome completo" required/></td>
+                </tr>
+                <tr>
+                    <td>Endereço</td>
+                    <td><input type="text" name="Endereco" placeholder="Digite o endereço"/></td>
+                </tr>
+                <tr>
+                    <td>Numero</td>
+                    <td><input type="text" name="Numero" /></td>
+                </tr>
+                <tr>
+                    <td>Cidade</td>
+                    <td><input type="text" name="Cidade" /></td>
+                </tr>
+                <tr>
+                    <td>Telefone</td>
+                    <td><input type="text" name="Telefone" /></td>
+                </tr>
+                <tr>
+                    <td>Celular</td>
+                    <td><input type="text" name="Celular" /></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" name="Email" required/></td>
+                </tr>
+                <tr>
+                    <td>Nascimento</td>
+                    <td><input type="date" name="Nascimento" /></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="Password" required/></td>
+                </tr>
+                <tr>
+                    <td>Digite novamente o password</td>
+                    <td><input type="password" name="Confirmacao" required/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="Enviar" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+

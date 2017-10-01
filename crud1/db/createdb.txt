@@ -1,0 +1,69 @@
+﻿CREATE SEQUENCE user_id_seq;
+create table usuarios (
+	id bigint not null primary key DEFAULT nextval('user_id_seq'),
+	nome varchar (55),
+	endereco varchar (55),
+	numero varchar (55),
+	cidade varchar (55),
+	telefone varchar (55),
+	celular varchar (55),
+	email varchar (55),
+	nascimento timestamp,
+	password varchar(20)
+);
+
+ALTER SEQUENCE user_id_seq OWNED BY usuarios.id;
+
+insert into usuarios (id,nome,endereco, numero, cidade, telefone, email, nascimento) values (1000, 'Marcelo','Av Rua 1', 1, 'São Simão', '(19) 99999-9999', 'marcelo@yahoo.com.br','2010-10-10 00:00:00');
+
+
+//------------------------------- criando table categorias-----------------------
+create table categorias (
+	id int primary key not null,
+	nome varchar (55)
+);
+
+insert into categorias (id,nome) values (1, 'trabalho'); 
+insert into categorias (id,nome) values (2, 'pessoal'); 
+
+
+//------------------------------- criando table eventos-----------------------
+
+CREATE SEQUENCE evento_id_seq;
+create table eventos (
+	id bigint not null primary key DEFAULT nextval('evento_id_seq'),
+	descricao varchar(1000),
+	data_do_evento timestamp,
+	observacao varchar (1000),
+	categoriaId int
+);
+
+ALTER SEQUENCE evento_id_seq OWNED BY eventos.id;
+ALTER TABLE eventos 
+   ADD CONSTRAINT fk_evento_categoria
+   FOREIGN KEY (categoriaId) 
+   REFERENCES categorias(id);
+
+insert into eventos (id,descricao,data_do_evento, observacao, categoriaId) values (1000, 'evento1','2000-01-01 10:10:10', 'Levar a carne...',1);
+
+
+
+//------------------------------- criando table usuarios eventos -----------------------
+
+CREATE SEQUENCE usuario_evento_id_seq;
+create table usuarios_eventos (
+	id bigint not null primary key DEFAULT nextval('usuario_evento_id_seq'),
+	usuarioId bigint not null,
+	eventoId bigint not null
+);
+ALTER SEQUENCE usuario_evento_id_seq OWNED BY usuarios_eventos.id;
+
+ALTER TABLE usuarios_eventos 
+   ADD CONSTRAINT fk_usuario_e
+   FOREIGN KEY (usuarioId) 
+   REFERENCES usuarios(id);
+
+ALTER TABLE usuarios_eventos 
+   ADD CONSTRAINT fk_usuario_ev
+   FOREIGN KEY (eventoId) 
+   REFERENCES eventos(id);

@@ -1,0 +1,37 @@
+﻿@model crud1.Models.Usuario
+@{
+    crud1.Models.Usuario user = (crud1.Models.Usuario) ViewBag.User;
+}
+ 
+<style>
+    tr:nth-child(odd) {
+        background: #ddd;
+    }
+
+    tr:nth-child(even) {
+        background: #eee;
+    }
+
+    table tr:hover td {
+        background-color: #fff;
+    }
+</style>
+   <div>
+        <h3>Detalhes do contato</h3>
+        <table>
+            <tr>
+                <td>Id</td>
+                <td>@user.Id</td>
+            </tr>
+            <tr>
+                <td>Nome</td>
+                <td>@user.Nome</td>
+            </tr>
+            <tr>
+                <td>Idade</td>
+                <td></td>
+            </tr>
+        </table>
+        @Model.Id passando pelo model
+        <br/>
+    </div>

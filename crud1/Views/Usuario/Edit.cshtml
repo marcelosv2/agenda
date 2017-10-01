@@ -1,0 +1,56 @@
+﻿@{
+    crud1.Models.Usuario user = (crud1.Models.Usuario)ViewBag.User;
+    string data = user.Nascimento.ToString("yyyy-MM-dd");
+}
+
+    <div>
+        <h3>Editar Contato</h3>
+        <form action="/Usuario/Save" method="POST">
+            <input type="hidden" value="@user.Id" name="Id" />
+            <table>
+                <tr>
+                    <td>Nome</td>
+                    <td><input type="text" value="@user.Nome" name="Nome" placeholder="Digite o nome completo" /></td>
+                </tr>
+                <tr>
+                    <td>Endereço</td>
+                    <td><input type="text" value="@user.Endereco" name="Endereco" placeholder="Digite o endereço"/></td>
+                </tr>
+                <tr>
+                    <td>Numero</td>
+                    <td><input type="text" value="@user.Numero" name="Numero" /></td>
+                </tr>
+                <tr>
+                    <td>Cidade</td>
+                    <td><input type="text" value="@user.Cidade" name="Cidade" /></td>
+                </tr>
+                <tr>
+                    <td>Telefone</td>
+                    <td><input type="text" value="@user.Telefone" name="Telefone" /></td>
+                </tr>
+                <tr>
+                    <td>Celular</td>
+                    <td><input type="text" value="@user.Celular" name="Celular" /></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" value="@user.Email" name="Email" /></td>
+                </tr>
+                <tr>
+                    <td>Nascimento</td>
+                    <td><input type="date" value="@data" name="Nascimento" /></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" value="@user.Password" name="Password" /></td>
+                </tr>
+                <tr>
+                    <td>Digite novamente o password</td>
+                    <td><input type="password" value="@user.Password" name="Confirmacao" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="Enviar" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
